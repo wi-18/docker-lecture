@@ -61,7 +61,7 @@ arbeiten.
 ```bash
 docker ps --all
 ```
-zeigt alle Container an, welche auf dem Host laufen.
+zeigt alle Container an, welche auf dem Host existieren.
 
 ----
 

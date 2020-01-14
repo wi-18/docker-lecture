@@ -15,7 +15,7 @@ Linux
 
 Herausfinden der Container ID durch
 ```bash
-❯ docker ps -a
+❯ docker ps --all
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES
 ba2a99c85e7d        ubuntu              "/bin/bash"         x minutes ago       Exited (0) x minutes ago                        admiring_visvesvaraya
 ```
