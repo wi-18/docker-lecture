@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-web-app-deployment
+spec:
+  selector:
+    matchLabels:
+      app: example-web-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: example-web-app
+    spec:
+      containers:
+        - name: example-web-app
+          image: wi18/docker-web-page
+          ports:
+            - containerPort: 80
