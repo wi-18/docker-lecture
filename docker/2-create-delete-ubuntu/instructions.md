@@ -9,7 +9,6 @@ löschen.
 Erstelle den Container
 ----------------------
 Erstelle einen neuen Container auf Basis des Ubuntu Images.
-Um den Container im nachhinein leichter zu bedienen, gebe dem Container einen Namen.
 
 Nutze hierfür den Command [docker run](https://docs.docker.com/engine/reference/run/).
 Um direkt im Container arbeiten zu können, müssen noch die Flags `-i` und `-t` spezifiziert werden.
