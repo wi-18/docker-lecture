@@ -8,6 +8,7 @@ löschen.
 
 Erstelle den Container
 ----------------------
+
 Erstelle einen neuen Container auf Basis des Ubuntu Images.
 
 Nutze hierfür den Command [docker run](https://docs.docker.com/engine/reference/run/).

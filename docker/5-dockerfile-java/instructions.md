@@ -17,7 +17,13 @@ Hierfür kann das Kommando `COPY <HOST_PATH> <CONTAINER_PATH>` genutzt werden.
 4. Zusätzlich muss der Java Quelltext kompiliert werden. Mit `RUN <COMMAND...>` können Kommandos innerhalb des Containers
 ausgeführt werden.
 5. Als letzter Schritt muss das Startkommando des Containers festgelegt werden. Dieses Kommando wird ausgeführt wenn der
-Container startet. Hier sollte also die Java Datei ausgeführt werden. 
+Container startet. Hier sollte also die Java Datei ausgeführt werden.
+
+Nachdem die `Dockerfile` fertig konfiguriert ist kann das Image gebaut werden.
+Hierfür kann `docker build . -t <image_name>` genutzt werden solange sich die Terminal Session im gleichen Order wie 
+die `Dockerfile` befindet.
+
+Danach kann der Container wie in den vorherigen Übungen genutzt werden: `docker run -it <image_name>`.
 
 Hints
 =====
