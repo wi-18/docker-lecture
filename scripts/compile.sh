@@ -18,6 +18,8 @@ for file in *.md; do
     mdpdf "\$file"
 done
 EOL
+chmod u+x ./output/compile-script.sh
+echo "Generated compile script"
 
 #We use depth 3 here because README.md is in depth 1, and the template directory is depth 2
 find . -mindepth 3 -name "*.md" -print0 | while read -r -d $'\0' file; do
