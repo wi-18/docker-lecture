@@ -1,11 +1,4 @@
 #!/usr/bin/env bash
-outputDirectory="$(cd "$(dirname "$0")/.." || exit && pwd -P)/output"
-if hash wslpath 2>/dev/null; then
-  outputDirectory="$(wslpath -w "$outputDirectory")"
-fi
-
-echo "Moved to project root outputDirectory: $(pwd)"
-
 if [[ -d ./output ]]; then
   rm -r ./output
   echo "Deleted previous output directory"
@@ -29,7 +22,10 @@ find . -mindepth 3 -name "*.md" -print0 | while read -r -d $'\0' file; do
   cp "$file" "./output/$pdfOutput"
 done
 
-docker run --rm -v "$outputDirectory:/data" dprslt/mdpdf 'bash compile-script.sh'
+cd output
+./compile-script.sh
+cd ..
+
 echo "Compiled pdfs"
 
 for file in ./output/*.md; do

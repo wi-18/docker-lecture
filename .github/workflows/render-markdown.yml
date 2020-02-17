@@ -1,0 +1,49 @@
+name: Render Markdown
+on: push
+jobs:
+  render-markdown:
+    name: Render Markdown Job
+    runs-on: ubuntu-18.04
+    container:
+      image: dprslt/mdpdf
+    steps:
+      - uses: actions/checkout@v1
+        name: "Checkout repository code"
+
+      - run: make compile
+        name: "Compile project"
+
+      - run: tar -czvf ../compiled-markdown.tar.gz .
+        name: "Package compiled markdown into tarball"
+        working-directory: output
+
+      - uses: actions/upload-artifact@master
+        name: "Upload artifact to future jobs"
+        with:
+          name: compiled-markdown
+          path: compiled-markdown.tar.gz
+
+
+  upload-release-binary:
+    name: Upload release binaries
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/download-artifact@master
+        with:
+          name: compiled-markdown
+          path: .
+      - uses: softprops/action-gh-release@v1
+        name: Release artifacts
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: compiled-markdown.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+
+
+
+
+
+
