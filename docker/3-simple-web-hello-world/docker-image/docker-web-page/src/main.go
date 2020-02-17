@@ -21,7 +21,7 @@ const HelloWorldHtml string = `
 	<title>Hello World</title>
 </head>
 <body style="background: black; width: 100%; height: 100%">
-	<img src="{{.Host}}" alt="Well done" style="display: block;margin-left: auto;margin-right: auto;width: 50%;">
+	<img src="{{.Gif}}" alt="Well done" style="display: block;margin-left: auto;margin-right: auto;width: 50%;">
 </body>
 </html>
 `
