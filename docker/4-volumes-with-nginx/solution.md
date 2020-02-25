@@ -17,9 +17,9 @@ Beispiel einer `index.html` Datei:
 
 --- 
 
-In diesem Beispiel befindet sich die `index.html` Datei im Order `Users/DHWB/Documents/Docker/html`.
+In diesem Beispiel befindet sich die `index.html` Datei im Order `Users/DHBW/Documents/Docker/html`.
 
 ```bash
-docker run -p 80:80 -v Users/DHWB/Documents/Docker/html:/usr/share/nginx/html nginx
+docker run -p 80:80 -v Users/DHBW/Documents/Docker/html:/usr/share/nginx/html nginx
 ```
 
