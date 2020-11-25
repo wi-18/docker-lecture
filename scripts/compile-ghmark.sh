@@ -6,7 +6,7 @@ fi
 echo "Moved to project root outputDirectory: $(pwd)"
 
 if [[ -d ./output ]]; then
-  rm -rf ./output
+  rm -r ./output
   echo "Deleted previous output directory"
 fi
 mkdir output
@@ -14,11 +14,9 @@ mkdir output
 cat >./output/compile-script.sh <<EOL
 for file in *.md; do
     [ -f "\$file" ] || continue
-    mdpdf "\$file"
+    ghmark "\$file"
 done
 EOL
-chmod u+x ./output/compile-script.sh
-echo "Generated compile script"
 
 #We use depth 3 here because README.md is in depth 1, and the template directory is depth 2
 find . -mindepth 3 -name "*.md" -print0 | while read -r -d $'\0' file; do
@@ -27,18 +25,8 @@ find . -mindepth 3 -name "*.md" -print0 | while read -r -d $'\0' file; do
 
   cp "$file" "./output/$pdfOutput"
 done
-echo "Compied files"
 
-if which mdpdf &> /dev/null; then
-  pushd output || exit 1
-  ./compile-script.sh
-  popd || exit 1
-elif which docker &> /dev/null; then
-  docker run --rm -v "$outputDirectory:/data" enric1994/mdpdf /bin/sh -c 'cd /data; ./compile-script.sh'
-else
-  echo "Did not find docker or mdpdf binary!!"
-  exit 1
-fi
+docker run --rm -v "$outputDirectory:/data" lynxplay/ghmark /bin/sh -c 'cd /data && ./compile-script.sh'
 echo "Compiled pdfs"
 
 for file in ./output/*.md; do
