@@ -5,7 +5,7 @@ jobs:
     name: Render Markdown Job
     runs-on: ubuntu-18.04
     container:
-      image: dprslt/mdpdf
+      image: enric1994/mdpdf
     steps:
       - uses: actions/checkout@v1
         name: "Checkout repository code"
